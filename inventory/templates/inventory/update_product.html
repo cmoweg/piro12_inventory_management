@@ -1,0 +1,24 @@
+{% extends 'core.html' %}
+
+{% block content %}
+
+<form action="{% url 'inventory:update_product' product.pk %}" method="POST">
+    {% csrf_token %}
+    <p>제품명: <input type="text" name="product_name" value="{{product.product_name}}"></p>
+    <p>제품 설명: <textarea name="product_desc" cols="30" rows="10">{{product.product_desc}}</textarea></p>
+    <p>가격: <input type="text" name="product_price" value="{{product.product_price}}"></p>
+    <p>남은 수량: <input type="text" name="product_stock" value="{{product.product_stock}}"></p>
+    <p>거래처:
+        <select name="product_sell" class="custom-select">
+            <option selected>---------</option>
+            <!--예외 처리 해줘야 함.-->
+            {% for seller in sellers %}
+            <option value="{{ seller.pk }}">{{ seller }}</option>
+            {% endfor %}
+        </select>
+    </p>
+    <p><input type="submit" value="등록"></p>
+
+</form>
+
+{% endblock %}

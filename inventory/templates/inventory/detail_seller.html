@@ -1,0 +1,42 @@
+{% extends 'core.html' %}
+
+{% block content %}
+
+<div>
+    거래처: {{ seller.seller_name }}
+</div>
+
+<div>
+    전화번호: {{ seller.seller_phone }}
+</div>
+<div>
+    주소: {{ seller.seller_address}}
+</div>
+
+<div>
+    거래 상품 목록
+    <ul>
+        {% for product in seller.product_set.all %}
+        <a href="{% url 'inventory:detail_product' product.pk %}">
+            <li>{{ product }}</li>
+        </a>
+        {% endfor %}
+    </ul>
+</div>
+
+<div>
+    <div class="list-group">
+        <form action="{% url 'inventory:update_seller' seller.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="list-group-item list-group-item-action">수정</button>
+        </form>
+        <form action="{% url 'inventory:delete_seller' seller.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="list-group-item list-group-item-action">삭제</button>
+        </form>
+        <a href="{% url 'inventory:manage_seller' %}" class="list-group-item list-group-item-action">목록</a>
+    </div>
+</div>
+
+
+{% endblock %}

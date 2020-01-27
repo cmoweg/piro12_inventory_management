@@ -1,0 +1,11 @@
+{% extends 'core.html' %}
+
+{% block content %}
+<ul>
+    {% for product in products %}
+    <a href="{% url 'inventory:detail_product' product.pk %}">
+        <li>{{ product }}</li>
+    </a>
+    {% endfor %}
+</ul>
+{% endblock %}

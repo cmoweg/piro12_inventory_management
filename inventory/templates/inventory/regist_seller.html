@@ -1,0 +1,14 @@
+{% extends 'core.html' %}
+
+{% block content %}
+
+<form action="{% url 'inventory:regist_seller' %}" method="POST">
+    {% csrf_token %}
+    <p>이름: <input type="text" name="seller_name"></p>
+    <p>전화번호: <input type="text" name="seller_phone"></p>
+    <p>주소: <input type="text" name="seller_address"></p>
+
+    <p><input type="submit" value="등록"></p>
+</form>
+
+{% endblock %}

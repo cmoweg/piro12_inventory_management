@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <a href="{% url 'inventory:inventory_main' %}">
+                로고
+            </a>
+        </div>
+        <div class="col-md-4 offset-md-4">
+            <div class="row">
+                <div class="col ">
+                    <a href="{% url 'inventory:regist_product' %}">
+                        상품 등록
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="{% url 'inventory:regist_seller' %}">
+                        거래처 등록
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="{% url 'inventory:manage_seller' %}">
+                        거래처 관리
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

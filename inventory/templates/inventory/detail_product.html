@@ -1,0 +1,41 @@
+{% extends 'core.html' %}
+
+{% block content %}
+
+<div>
+    제품명: {{ product }}
+</div>
+<div>
+    제품사진
+</div>
+<div>
+    제품설명: {{ product.product_desc}}
+</div>
+<div>
+    제품 가격: {{product.product_price}}
+</div>
+<div>
+    남은 수량: {{ product.product_stock}}
+</div>
+<div>
+    거래처:
+    <a href="{% url 'inventory:detail_seller' product.product_sell.pk %}">
+        {{product.product_sell}}
+    </a>
+</div>
+
+
+<div>
+    <div class="list-group">
+
+        <a href="{% url 'inventory:update_product' product.pk %}" class="list-group-item list-group-item-action">수정</a>
+        <form action="{% url 'inventory:delete_product' product.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="list-group-item list-group-item-action">삭제</button>
+        </form>
+        <a href="{% url 'inventory:inventory_main' %}" class="list-group-item list-group-item-action">목록</a>
+    </div>
+</div>
+
+
+{% endblock %}

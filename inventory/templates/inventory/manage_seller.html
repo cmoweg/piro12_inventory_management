@@ -1,0 +1,11 @@
+{% extends 'core.html' %}
+
+{% block content %}
+<ul>
+    {% for seller in sellers %}
+    <a href="{% url 'inventory:detail_seller' seller.pk %}">
+        <li>{{ seller }}</li>
+    </a>
+    {% endfor %}
+</ul>
+{% endblock %}
