@@ -110,7 +110,23 @@ def delete_product(request, pk):
 
 
 def update_seller(request, pk):
-    return None
+    seller = Seller.objects.get(pk=pk)
+
+    if request.method == 'GET':
+        return render(request, 'inventory/update_seller.html', {
+            'seller': seller,
+        })
+    elif request.method == 'POST':
+        name = request.POST['seller_name']
+        phone = request.POST['seller_phone']
+        address = request.POST['seller_address']
+
+        seller.seller_name = name
+        seller.seller_phone = phone
+        seller.seller_address = address
+
+        seller.save()
+    return redirect('inventory:detail_seller', seller.pk)
 
 
 def delete_seller(request, pk):

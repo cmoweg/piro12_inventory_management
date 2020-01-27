@@ -26,10 +26,8 @@
 
 <div>
     <div class="list-group">
-        <form action="{% url 'inventory:update_seller' seller.pk %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" class="list-group-item list-group-item-action">수정</button>
-        </form>
+        <a href="{% url 'inventory:update_seller' seller.pk %}" class="list-group-item list-group-item-action">수정</a>
+
         <form action="{% url 'inventory:delete_seller' seller.pk %}" method="POST">
             {% csrf_token %}
             <button type="submit" class="list-group-item list-group-item-action">삭제</button>

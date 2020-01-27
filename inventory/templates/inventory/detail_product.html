@@ -27,7 +27,6 @@
 
 <div>
     <div class="list-group">
-
         <a href="{% url 'inventory:update_product' product.pk %}" class="list-group-item list-group-item-action">수정</a>
         <form action="{% url 'inventory:delete_product' product.pk %}" method="POST">
             {% csrf_token %}

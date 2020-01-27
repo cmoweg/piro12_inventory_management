@@ -1,11 +1,16 @@
 {% extends 'core.html' %}
 
 {% block content %}
-<ul>
+
+<div class="row row-cols-3">
     {% for seller in sellers %}
-    <a href="{% url 'inventory:detail_seller' seller.pk %}">
-        <li>{{ seller }}</li>
-    </a>
+    <div class="col">
+        <a href="{% url 'inventory:detail_seller' seller.pk %}">
+            <p>{{ seller }}</p>
+        </a>
+        <p>전화번호: {{ seller.seller_phone}}</p>
+        <p>주소: {{ seller.seller_address}}</p>
+    </div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}

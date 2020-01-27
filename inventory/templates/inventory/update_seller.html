@@ -1,0 +1,14 @@
+{% extends 'core.html' %}
+
+{% block content %}
+
+<form action="{% url 'inventory:update_seller' seller.pk %}" method="POST">
+    {% csrf_token %}
+    <p>이름: <input type="text" name="seller_name" value="{{seller.seller_name}}"></p>
+    <p>전화번호: <input type="text" name="seller_phone" value="{{seller.seller_phone}}"></p>
+    <p>주소: <input type="text" name="seller_address" value="{{seller.seller_address}}"></p>
+
+    <p><input type="submit" value="등록"></p>
+</form>
+
+{% endblock %}

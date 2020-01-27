@@ -1,11 +1,15 @@
 {% extends 'core.html' %}
 
 {% block content %}
-<ul>
+<div class="row row-cols-3">
     {% for product in products %}
-    <a href="{% url 'inventory:detail_product' product.pk %}">
-        <li>{{ product }}</li>
-    </a>
+    <div class="col">
+        <a href="{% url 'inventory:detail_product' product.pk %}">
+            <p>{{ product }}</p>
+        </a>
+        <p>상품 가격: {{ product.product_price}}</p>
+        <p>남은 수량: {{ product.product_stock}}</p>
+    </div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}
